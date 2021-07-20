@@ -1,0 +1,44 @@
+#ContainerPrincipal {
+    font-family: initial;
+    background-color: gray;
+    color: lightseagreen;
+    text-align: center;
+    padding: 15px;
+    margin: 15px;
+    border: 0px;
+}
+
+#ContainerList {
+    text-align: center;
+    padding: 0px;
+    margin: 15px;
+}
+
+#Encabezado {
+    background-color: black;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+table tr,
+td {
+    border: grey 1px solid;
+}
+
+#grupoForm {
+    background-color: dimgray;
+    color: white;
+    border: lightseagreen 1px solid;
+    border-radius: 15px;
+    padding: 20px;
+    display: none;
+}
+
+#botones {
+    text-align: center;
+    padding: 20px;
+}
+
+#grupoList {
+    display: none;
+}
