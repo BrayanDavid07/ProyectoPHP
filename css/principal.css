@@ -1,10 +1,10 @@
 #ContainerPrincipal {
     font-family: initial;
-    background-color: gray;
-    color: lightseagreen;
+    background-color: royalblue;
+    color: white;
     text-align: center;
     padding: 15px;
-    margin: 15px;
+    margin: 0px;
     border: 0px;
 }
 
@@ -12,6 +12,8 @@
     text-align: center;
     padding: 0px;
     margin: 15px;
+    width: 100%;
+    height: 100%;
 }
 
 #Encabezado {
@@ -22,13 +24,14 @@
 
 table tr,
 td {
+    text-align: center;
     border: grey 1px solid;
 }
 
 #grupoForm {
     background-color: dimgray;
     color: white;
-    border: lightseagreen 1px solid;
+    border: royalblue 1px solid;
     border-radius: 15px;
     padding: 20px;
     display: none;
@@ -40,5 +43,29 @@ td {
 }
 
 #grupoList {
+    text-align: center;
     display: none;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 55px;
+}
+
+#table {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#alert {
+    text-align: center;
+    display: none;
+    margin: 25px;
+    padding: 10px;
+    border: 0px;
 }

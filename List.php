@@ -12,51 +12,49 @@
 </head>
 
 <body>
-    <div id="ContainerList" class="container">
+    <?php
+    include './DataBase/ConnectionDataBase.php';
+
+    $connectionDataBase = new ConnectionDataBase();
+    $cdb = $connectionDataBase->Conexion();
+    ?>
+    <table id="table" class="table">
+        <tr id="Encabezado">
+            <td>Nombres</td>
+            <td>Cédula</td>
+            <td>Correo Electrónico</td>
+            <td>Telefono</td>
+            <td>Empresa</td>
+            <td>Estado</td>
+            <td>Fecha</td>
+        </tr>
         <?php
-        include './DataBase/ConnectionDataBase.php';
+        try {
 
-        $connectionDataBase = new ConnectionDataBase();
-        $cdb = $connectionDataBase->Conexion();
+            $query = "SELECT * FROM tb_contactos;";
+            $statement = $cdb->prepare($query);
+            $result = $statement->execute();
+            $rows = $statement->fetchAll(\PDO::FETCH_OBJ);
         ?>
-        <table id="table" class="table">
-            <tr id="Encabezado">
-                <td>Nombres</td>
-                <td>Cédula</td>
-                <td>Correo Electrónico</td>
-                <td>Telefono</td>
-                <td>Empresa</td>
-                <td>Estado</td>
-                <td>Fecha</td>
-            </tr>
             <?php
-            try {
-
-                $query = "SELECT * FROM tb_contactos;";
-                $statement = $cdb->prepare($query);
-                $result = $statement->execute();
-                $rows = $statement->fetchAll(\PDO::FETCH_OBJ);
+            foreach ($rows as $row) {
             ?>
-                <?php
-                foreach ($rows as $row) {
-                ?>
-                    <tr>
-                        <td> <?php print($row->nombre) ?> </td>
-                        <td> <?php print($row->cedula) ?> </td>
-                        <td> <?php print($row->correo) ?> </td>
-                        <td> <?php print($row->telefono) ?> </td>
-                        <td> <?php print($row->empresa) ?> </td>
-                        <td> <?php print($row->estado) ?> </td>
-                        <td> <?php print($row->fechareg) ?> </td>
-                    </tr>
-            <?php
-                }
-            } catch (\PDOException $exception) {
-                echo 'Error al ejecutar la consulta: ' . $exception;
+                <tr>
+                    <td> <?php print($row->nombre) ?> </td>
+                    <td> <?php print($row->cedula) ?> </td>
+                    <td> <?php print($row->correo) ?> </td>
+                    <td> <?php print($row->telefono) ?> </td>
+                    <td> <?php print($row->empresa) ?> </td>
+                    <td> <?php print($row->estado) ?> </td>
+                    <td> <?php print($row->fechareg) ?> </td>
+                </tr>
+        <?php
             }
-            ?>
-        </table>
-    </div>
+        } catch (\PDOException $exception) {
+            echo 'Error al ejecutar la consulta: ' . $exception;
+        }
+        ?>
+    </table>
 </body>
 
 </html>

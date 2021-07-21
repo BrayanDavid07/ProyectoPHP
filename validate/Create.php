@@ -1,8 +1,7 @@
 <?php
-
-include "../DataBase/ConnectionDataBase.php";
-include "../controladores/controladorContactos.php";
-include "../modelos/tb_contactos.php";
+include "./DataBase/ConnectionDataBase.php";
+include "./controladores/controladorContactos.php";
+include "./modelos/tb_contactos.php";
 
 $conexion = new ConnectionDataBase();
 $cdb = $conexion->Conexion();

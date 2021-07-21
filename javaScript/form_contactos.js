@@ -1,6 +1,12 @@
 $(document).ready(function() {
 
     document.getElementById("buttonDivForm").addEventListener("click", function() {
+        // setTimeout(function() {
+        //     var alert = document.getElementById("alert");
+        //     alert.style.display = "block";
+        //     alert.className = 'alert alert-warning'
+        //     alert.innerHTML = "REGISTRO CREADO SATISFACTORIAMENTE";
+        // }, 2000)
         var divList = document.getElementById("grupoList");
         divList.style.display = "none";
         var divForm = document.getElementById("grupoForm");
@@ -17,16 +23,27 @@ $(document).ready(function() {
     }, false);
 
     $('#form-contactos').submit(function(e) {
-        alert("INGRESANDO AL METODO ENVIAR");
+        e.preventDefault();
         $.ajax({
             type: "POST",
-            url: './validate/Create.php',
+            url: "../validate/Create.php",
             data: $(this).serialize(),
-            succes: function(response) {
-                alert("REGISTRO CREADO SATISFACTORIAMENTE");
+            succes: function() {
+                setTimeout(function() {
+                        $("#alert").text = "REGISTRO CREADO SATISFACTORIAMENTE";
+                    }, 2000)
+                    //Pendiente ocultar y volver a mostrar.
+                    // alert("REGISTRO CREADO SATISFACTORIAMENTE");
             },
             error: function(e) {
-                alert("SE HA PRESENTADO UN ERROR EN EL SERVIDOR");
+                var alert = document.getElementById("alert");
+                alert.style.display = "block";
+                alert.className = 'alert alert-warning'
+                alert.innerHTML = "SE HA PRESENTADO UN ERROR EN EL SERVIDOR";
+                setTimeout(function() {
+                    alert.style.display = "none";
+                }, 2000);
+                // alert("SE HA PRESENTADO UN ERROR EN EL SERVIDOR");
             }
         });
     });
