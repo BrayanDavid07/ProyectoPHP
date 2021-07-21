@@ -19,6 +19,7 @@ class controladorContactos
         } catch (\PDOException $e) {
             echo 'Error al ejecutar acción: ' . $e;
             exit();
+            return 0;
         }
     }
 }

@@ -1,7 +1,7 @@
 <?php
-include "./DataBase/ConnectionDataBase.php";
-include "./controladores/controladorContactos.php";
-include "./modelos/tb_contactos.php";
+include "../DataBase/ConnectionDataBase.php";
+include "../controladores/controladorContactos.php";
+include "../modelos/tb_contactos.php";
 
 $conexion = new ConnectionDataBase();
 $cdb = $conexion->Conexion();
@@ -18,5 +18,5 @@ if (isset($_POST['cedula'])) {
     $objet->telefono = $_POST['telephone'];
     $objet->empresa = $_POST['company'];
     $objet->estado = $_POST['status'];
-    $operationController->Create($objet);
+    echo $operationController->Create($objet);
 }

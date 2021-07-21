@@ -25,13 +25,13 @@
 table tr,
 td {
     text-align: center;
-    border: grey 1px solid;
+    border: royalblue 1px solid;
 }
 
 #grupoForm {
-    background-color: dimgray;
-    color: white;
-    border: royalblue 1px solid;
+    background-color: rgba(104, 150, 202, 0.493);
+    color: black;
+    border: rgb(82, 107, 182) 1px solid;
     border-radius: 15px;
     padding: 20px;
     display: none;

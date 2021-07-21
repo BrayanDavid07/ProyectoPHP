@@ -1,12 +1,25 @@
 $(document).ready(function() {
 
+    var alert = document.getElementById("alert");
+
+    function crearAlertaSuccess() {
+        alert.style.display = "block";
+        alert.className = 'alert alert-success'
+        alert.innerHTML = "Registro Creado Satisfactoriamente";
+    }
+
+    function crearAlertaDanger() {
+        alert.style.display = "block";
+        alert.className = 'alert alert-danger'
+        alert.innerHTML = "Ha ocurrido un error";
+    }
+
+    function ocultarAlerta() {
+        alert.style.display = "none";
+    }
+
+
     document.getElementById("buttonDivForm").addEventListener("click", function() {
-        // setTimeout(function() {
-        //     var alert = document.getElementById("alert");
-        //     alert.style.display = "block";
-        //     alert.className = 'alert alert-warning'
-        //     alert.innerHTML = "REGISTRO CREADO SATISFACTORIAMENTE";
-        // }, 2000)
         var divList = document.getElementById("grupoList");
         divList.style.display = "none";
         var divForm = document.getElementById("grupoForm");
@@ -26,24 +39,27 @@ $(document).ready(function() {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "../validate/Create.php",
+            url: "validate/Create.php",
             data: $(this).serialize(),
-            succes: function() {
-                setTimeout(function() {
-                        $("#alert").text = "REGISTRO CREADO SATISFACTORIAMENTE";
+            success: function(result) {
+                console.log(result);
+                if (result == 1) {
+                    crearAlertaSuccess();
+                    setTimeout(function() {
+                        ocultarAlerta();
                     }, 2000)
-                    //Pendiente ocultar y volver a mostrar.
-                    // alert("REGISTRO CREADO SATISFACTORIAMENTE");
+                } else {
+                    crearAlertaDanger();
+                    setTimeout(function() {
+                        ocultarAlerta();
+                    }, 1500);
+                }
             },
-            error: function(e) {
-                var alert = document.getElementById("alert");
-                alert.style.display = "block";
-                alert.className = 'alert alert-warning'
-                alert.innerHTML = "SE HA PRESENTADO UN ERROR EN EL SERVIDOR";
+            error: function() {
+                crearAlertaDanger();
                 setTimeout(function() {
-                    alert.style.display = "none";
-                }, 2000);
-                // alert("SE HA PRESENTADO UN ERROR EN EL SERVIDOR");
+                    ocultarAlerta();
+                }, 1500);
             }
         });
     });
