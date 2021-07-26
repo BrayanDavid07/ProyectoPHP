@@ -22,4 +22,19 @@ class controladorContactos
             return 0;
         }
     }
+
+    public function ListContactos()
+    {
+        $query = "SELECT * FROM tb_contactos";
+        try {
+            $statement = $this->conexiondb->prepare($query);
+            $statement->execute();
+            $array = $statement->fetchAll(\PDO::FETCH_OBJ);
+            return $array;
+        } catch (\PDOException $e) {
+            echo 'Error al ejecutar consulta: ' . $e;
+            exit();
+            return 0;
+        }
+    }
 }

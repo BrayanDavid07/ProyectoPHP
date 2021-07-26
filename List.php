@@ -36,7 +36,7 @@
 
             $query = "SELECT * FROM tb_contactos;";
             $statement = $cdb->prepare($query);
-            $result = $statement->execute();
+            $statement->execute();
             $rows = $statement->fetchAll(\PDO::FETCH_OBJ);
             // echo json_encode($rows);
         ?>
@@ -52,6 +52,7 @@
                     <td> <?php print($row->empresa) ?> </td>
                     <td> <?php print($row->estado) ?> </td>
                     <td> <button id="eliminar" value="<?php echo $row->id ?>" class="btn btn-danger">Eliminar</button></td>
+                
                 </tr>
         <?php
             }

@@ -18,5 +18,5 @@ if (isset($_POST['cedula'])) {
     $objet->telefono = $_POST['telephone'];
     $objet->empresa = $_POST['company'];
     $objet->estado = $_POST['status'];
-    echo $operationController->Create($objet);
+    return $operationController->Create($objet);
 }

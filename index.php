@@ -63,9 +63,9 @@
         </form>
     </div>
 
-    <div id="grupoList">
-        <iframe src="List.php">
-        </iframe>
+    <div id="grupoList" name="grupoList">
+        <!-- <iframe src="List.php">
+        </iframe> -->
     </div>
 
     <div id="alert" name="alert" class="alert alert-success" role="alert">
