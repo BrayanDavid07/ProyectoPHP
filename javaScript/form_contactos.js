@@ -2,20 +2,16 @@ $(document).ready(function() {
 
     var alert = document.getElementById("alert");
 
-    function crearAlertaSuccess(class__, message) {
+    function crearAlerta(class__, message) {
         alert.style.display = "block";
-        alert.className = 'alert alert-success'
-        alert.innerHTML = "Registro Creado Satisfactoriamente";
-    }
-
-    function crearAlertaDanger(class__, message) {
-        alert.style.display = "block";
-        alert.className = 'alert alert-danger'
+        alert.className = class__;
         alert.innerHTML = message;
     }
 
-    function ocultarAlerta() {
-        alert.style.display = "none";
+    function deleteAlert() {
+        setTimeout(function() {
+            alert.style.display = "none";
+        }, 1500);
     }
 
     document.getElementById("buttonDivForm").addEventListener("click", function() {
@@ -38,17 +34,16 @@ $(document).ready(function() {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "validate/List.php",
+            url: "List.php",
             data: {},
             success: function(data) {
                 e.preventDefault();
-                $("#grupoList").html(text = data);
+                var group = document.getElementById("grupoList");
+                group.innerHTML = data;
             },
             error: function() {
-                crearAlertaDanger();
-                setTimeout(function() {
-                    ocultarAlerta();
-                }, 1500);
+                crearAlerta("alert alert-warning", "Ah ocurrido un error en el servidor");
+                deleteAlert();
             }
         });
     }, false);
@@ -57,28 +52,28 @@ $(document).ready(function() {
         e.preventDefault();
         $.ajax({
             type: "POST",
-            url: "validate/Create.php",
+            url: "controladores/ControladorCreate.php",
             data: $(this).serialize(),
             success: function(result) {
-                console.log(result);
                 if (result == 1) {
-                    crearAlertaSuccess();
-                    setTimeout(function() {
-                        ocultarAlerta();
-                    }, 2000)
+                    crearAlerta("alert alert-success", "Se ah creado correctamente el usuario");
+                    deleteAlert();
                 } else {
-                    crearAlertaDanger();
-                    setTimeout(function() {
-                        ocultarAlerta();
-                    }, 1500);
+                    crearAlerta("alert alert-warning", "Ah ocurrido un error en el servidor");
+                    deleteAlert();
                 }
             },
             error: function() {
-                crearAlertaDanger();
-                setTimeout(function() {
-                    ocultarAlerta();
-                }, 1500);
+                crearAlerta("alert alert-warning", "Ah ocurrido un error en el servidor");
+                deleteAlert();
             }
         });
     });
+
+    var eliminar = document.getElementById("eliminar");
+
+    eliminar.addEventListener("click", function() {
+        console.log("Hola Mundo");
+    }, false);
+
 });
