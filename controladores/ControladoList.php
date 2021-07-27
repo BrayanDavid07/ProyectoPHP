@@ -1,13 +1,13 @@
 <?php
-
-include "../controladores/controladorContactos.php";
 include "../DataBase/ConnectionDataBase.php";
+include "../modelos/ModeloContactos.php";
+
 $coneccion = new ConnectionDataBase();
 $dbc = $coneccion->Conexion();
 
-$controlador = new controladorContactos();
-$controlador->conexiondb = $dbc;
-$row = $controlador->ListContactos();
+$modelo = new ModeloContactos();
+$modelo->conexiondb = $dbc;
+$row = $modelo->ListContactos();
 
 $valueHtml = '';
 $valueHtml .= '
@@ -32,7 +32,7 @@ foreach ($row as $rows) {
 <td>' . $rows->telefono . ' </td>
 <td>' . $rows->empresa . ' </td>
 <td>' . $rows->estado . ' </td>
-<td> <button id="eliminar" name="eliminar" value="'. $rows->id .'" class="btn btn-danger">Eliminar</button></td>
+<td> <button id="eliminar" name="eliminar" value="' . $rows->id . '" class="btn btn-danger">Eliminar</button></td>
 </tr>';
 }
 $valueHtml .= '</table>';

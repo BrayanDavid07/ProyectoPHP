@@ -1,13 +1,13 @@
 <?php
 include "../DataBase/ConnectionDataBase.php";
-include "../controladores/controladorContactos.php";
-include "../modelos/tb_contactos.php";
+include "../modelos/ModeloContactos.php";
+include "../tables/tb_contactos.php";
 
 $conexion = new ConnectionDataBase();
 $cdb = $conexion->Conexion();
 $objet = new tb_contactos();
 
-$operationController = new controladorContactos();
+$operationController = new ModeloContactos();
 $operationController->conexiondb = $cdb;
 // $operationController->contacto = $objet;
 
