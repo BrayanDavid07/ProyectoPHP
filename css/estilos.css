@@ -30,8 +30,8 @@ td {
 
 #grupoForm {
     background-color: royalblue;
-    color: white;
-    border: rgb(82, 107, 182) 1px solid;
+    color: black;
+    border: black 1px solid;
     border-radius: 15px;
     padding: 20px;
     display: none;
